@@ -40,7 +40,7 @@ class DataDict(object):
             conn = pymysql.connect(self.host_name, self.user_name, self.pwd, self.db_name, self.port)
             # Create a cursor object with cursor()
             cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
-            self.deal_file(self.folder_name + os.sep + 'Documention.md')
+            self.deal_file(self.folder_name + os.sep + 'Documentation base de données.md')
             self.generate_markdown_header()
             for table in tables:
                 # Table annotation get
@@ -51,7 +51,7 @@ class DataDict(object):
                 self.generate_markdown_table(result)
                 self.generate_markdown_indice(result)
                 # Close connection
-                print('complete data dictionary of table% s' % (table["name"],))
+                print('complete data dictionary of table %s' % (table["name"],))
             cursor.close()
             conn.close()
         except Exception as e:
@@ -60,7 +60,7 @@ class DataDict(object):
             exit(1)
 
     def generate_markdown_header(self):
-        file_path = self.folder_name + os.sep + 'Documention.md'
+        file_path = self.folder_name + os.sep + 'Documentation base de données.md'
         # Open file, ready to write
         dict_file = open(file_path, 'a', encoding='UTF-8')
 
@@ -73,7 +73,7 @@ class DataDict(object):
             # Create a cursor object with cursor()
             cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
             # Folder and file processing
-            file_path = self.folder_name + os.sep + 'Documention.md'
+            file_path = self.folder_name + os.sep + 'Documentation base de données.md'
             # Open file, ready to write
             dict_file = open(file_path, 'a', encoding='UTF-8')
 
@@ -131,7 +131,7 @@ class DataDict(object):
             fields = cursor.fetchall()
             if len(fields) > 0:
                 # Folder and file processing
-                file_path = self.folder_name + os.sep + 'Documention.md'
+                file_path = self.folder_name + os.sep + 'Documentation base de données.md'
                 # Open file, ready to write
                 dict_file = open(file_path, 'a', encoding='UTF-8')
 
